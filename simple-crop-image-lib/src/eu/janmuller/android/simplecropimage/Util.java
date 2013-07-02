@@ -29,11 +29,7 @@ import java.io.Closeable;
  */
 public class Util {
 
-    private static final String TAG = "db.Util";
-
-    private Util() {
-
-    }
+    private Util() {}
 
     /*
      * Compute the sample size as a function of minSideLength
@@ -230,8 +226,7 @@ public class Util {
 
     public static int getOrientationInDegree(Activity activity) {
 
-        int rotation = activity.getWindowManager().getDefaultDisplay()
-                .getRotation();
+        int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
         int degrees = 0;
 
         switch (rotation) {
