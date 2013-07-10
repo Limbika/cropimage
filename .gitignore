@@ -7,5 +7,4 @@ target/
 *.class
 *.log
 *.iml
-.DS_Store
-
+.project
