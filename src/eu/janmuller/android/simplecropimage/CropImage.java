@@ -94,9 +94,9 @@ public class CropImage extends MonitoredActivity {
 
         mImageView = (CropImageView) findViewById(R.id.image);
 
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB) {
-            mImageView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-        }
+//        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB) {
+//            mImageView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+//        }
 
         showStorageToast(this);
 
