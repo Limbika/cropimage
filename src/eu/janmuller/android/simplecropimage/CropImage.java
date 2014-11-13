@@ -17,21 +17,38 @@
 package eu.janmuller.android.simplecropimage;
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.concurrent.CountDownLatch;
+
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
-import android.graphics.*;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Path;
+import android.graphics.PointF;
+import android.graphics.PorterDuff;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Region;
 import android.media.FaceDetector;
 import android.net.Uri;
-import android.os.*;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.StatFs;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
-
-import java.io.*;
-import java.util.concurrent.CountDownLatch;
 
 
 /**
@@ -626,7 +643,7 @@ public class CropImage extends MonitoredActivity {
 
         if (noStorageText != null) {
 
-            Toast.makeText(activity, noStorageText, 5000).show();
+            Toast.makeText(activity, noStorageText, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -639,8 +656,8 @@ public class CropImage extends MonitoredActivity {
             String storageDirectory =
                     Environment.getExternalStorageDirectory().toString();
             StatFs stat = new StatFs(storageDirectory);
-            float remaining = ((float) stat.getAvailableBlocks()
-                    * (float) stat.getBlockSize()) / 400000F;
+            @SuppressWarnings("deprecation")
+			float remaining = ((float) stat.getAvailableBlocks() * (float) stat.getBlockSize()) / 400000F;
             return (int) remaining;
             //}
         } catch (Exception ex) {
