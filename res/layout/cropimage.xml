@@ -12,43 +12,52 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:orientation="horizontal"
-        android:paddingLeft="10dip"
-        android:paddingRight="10dip" >
+        android:layout_margin="8dp"
+        android:orientation="horizontal" >
 
         <ImageButton
             android:id="@+id/discard"
-            style="@style/CropButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
+            android:layout_marginRight="4dp"
+            android:padding="8dp"
+            android:background="@drawable/btn_bg"
             android:src="@drawable/ic_cancel" />
 
         <ImageButton
             android:id="@+id/rotateLeft"
-            style="@style/CropButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:layout_marginLeft="4dp"
             android:layout_toRightOf="@id/discard"
+            android:padding="8dp"
+            android:background="@drawable/btn_bg"
             android:src="@drawable/ic_rotate_left" />
 
         <ImageButton
             android:id="@+id/rotateRight"
-            style="@style/CropButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:layout_marginLeft="4dp"
             android:layout_toRightOf="@id/rotateLeft"
+            android:padding="8dp"
+            android:background="@drawable/btn_bg"
             android:src="@drawable/ic_rotate_right" />
 
         <ImageButton
             android:id="@+id/save"
-            style="@style/CropButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
             android:layout_toRightOf="@id/rotateRight"
+            android:padding="8dp"
+            android:background="@drawable/btn_bg"
             android:src="@drawable/ic_stick" />
     </RelativeLayout>
 

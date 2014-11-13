@@ -17,7 +17,14 @@
 package eu.janmuller.android.simplecropimage;
 
 
-import android.graphics.*;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Region;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
@@ -47,9 +54,9 @@ class HighlightView {
 
         android.content.res.Resources resources = mContext.getResources();
         mResizeDrawableWidth =
-                resources.getDrawable(R.drawable.camera_crop_width);
+                resources.getDrawable(R.drawable.ic_crop_width);
         mResizeDrawableHeight =
-                resources.getDrawable(R.drawable.camera_crop_height);
+                resources.getDrawable(R.drawable.ic_crop_height);
         mResizeDrawableDiagonal =
                 resources.getDrawable(R.drawable.indicator_autocrop);
     }
@@ -95,7 +102,7 @@ class HighlightView {
                 mOutlinePaint.setColor(0xFFEF04D6);
             } else {
                 path.addRect(new RectF(mDrawRect), Path.Direction.CW);
-                mOutlinePaint.setColor(0xFFFF8A00);
+                mOutlinePaint.setColor(Color.WHITE);
             }
             canvas.clipPath(path, Region.Op.DIFFERENCE);
             canvas.drawRect(viewDrawingRect,
