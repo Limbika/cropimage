@@ -256,8 +256,7 @@ public class CropImage extends MonitoredActivity {
 
         mImageView.setImageBitmapResetBase(mBitmap, true);
 
-        Util.startBackgroundJob(this, null,
-                "Please wait\u2026",
+        Util.startBackgroundJob(this,
                 new Runnable() {
                     public void run() {
 
@@ -401,7 +400,7 @@ public class CropImage extends MonitoredActivity {
             finish();
         } else {
             final Bitmap b = croppedImage;
-            Util.startBackgroundJob(this, null, getString(R.string.saving_image),
+            Util.startBackgroundJob(this,
                     new Runnable() {
                         public void run() {
 
@@ -648,7 +647,6 @@ public class CropImage extends MonitoredActivity {
     }
 
     public static int calculatePicturesRemaining() {
-
         try {
             /*if (!ImageManager.hasStorage()) {
                 return NO_STORAGE_ERROR;
@@ -667,7 +665,6 @@ public class CropImage extends MonitoredActivity {
             return CANNOT_STAT_ERROR;
         }
     }
-
 
 }
 

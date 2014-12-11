@@ -16,13 +16,16 @@ package eu.janmuller.android.simplecropimage;
  */
 
 
+import java.io.Closeable;
+
 import android.app.Activity;
-import android.app.ProgressDialog;
-import android.graphics.*;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Rect;
 import android.os.Handler;
 import android.view.Surface;
-
-import java.io.Closeable;
 
 /**
  * Collection of utility functions used in this package.
@@ -140,26 +143,21 @@ public class Util {
         }
     }
 
-    private static class BackgroundJob
-            extends MonitoredActivity.LifeCycleAdapter implements Runnable {
+    private static class BackgroundJob extends MonitoredActivity.LifeCycleAdapter implements Runnable {
 
         private final MonitoredActivity mActivity;
-        private final ProgressDialog    mDialog;
         private final Runnable          mJob;
         private final Handler           mHandler;
-        private final Runnable mCleanupRunner = new Runnable() {
+        private final Runnable 			mCleanupRunner = new Runnable() {
+        	
+        	@Override
             public void run() {
-
                 mActivity.removeLifeCycleListener(BackgroundJob.this);
-                if (mDialog.getWindow() != null) mDialog.dismiss();
             }
         };
 
-        public BackgroundJob(MonitoredActivity activity, Runnable job,
-                             ProgressDialog dialog, Handler handler) {
-
+        public BackgroundJob(MonitoredActivity activity, Runnable job,Handler handler) {
             mActivity = activity;
-            mDialog = dialog;
             mJob = job;
             mActivity.addLifeCycleListener(this);
             mHandler = handler;
@@ -185,24 +183,19 @@ public class Util {
 
         @Override
         public void onActivityStopped(MonitoredActivity activity) {
-
-            mDialog.hide();
+        	// Nothing
         }
 
         @Override
         public void onActivityStarted(MonitoredActivity activity) {
-
-            mDialog.show();
+            // Nothing
         }
     }
 
-    public static void startBackgroundJob(MonitoredActivity activity,
-                                          String title, String message, Runnable job, Handler handler) {
+    public static void startBackgroundJob(MonitoredActivity activity, Runnable job, Handler handler) {
         // Make the progress dialog uncancelable, so that we can gurantee
         // the thread will be done before the activity getting destroyed.
-        ProgressDialog dialog = ProgressDialog.show(
-                activity, title, message, true, false);
-        new Thread(new BackgroundJob(activity, job, dialog, handler)).start();
+        new Thread(new BackgroundJob(activity, job, handler)).start();
     }
 
 
