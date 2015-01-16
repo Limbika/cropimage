@@ -16,10 +16,10 @@
 
 package eu.janmuller.android.simplecropimage;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.os.Bundle;
-
-import java.util.ArrayList;
 
 public class MonitoredActivity extends Activity {
 

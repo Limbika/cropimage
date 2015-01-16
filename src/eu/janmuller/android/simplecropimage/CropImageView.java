@@ -1,12 +1,12 @@
 package eu.janmuller.android.simplecropimage;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-
-import java.util.ArrayList;
 
 class CropImageView extends ImageViewTouchBase {
 
